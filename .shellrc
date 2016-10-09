@@ -1,0 +1,83 @@
+# Local Variables:
+# mode: shell-script
+# End:
+
+if [ -z "${DOT_DIR}" ]; then 
+    echo "\$DOT_DIR must be set!"
+    exit
+fi
+
+SHELL_PATH="${DOT_DIR}/shell"
+
+shell::lib_load() 
+{
+    for f in ${SHELL_PATH}/lib/*; do
+        source $f
+    done 
+}
+
+shell::module_load()
+{
+    for f in ${SHELL_PATH}/*; do
+        if [ -f "$f" ]; then # skip directories
+            source $f
+        fi
+    done
+}
+
+shell::path_setup()
+{
+    path::prepend "${HOME}/.local/bin"
+    path::prepend "${HOME}/bin"
+
+    path::prepend /usr/local/bin
+    path::prepend /usr/local/sbin
+
+    path::prepend "${HOME}/.linuxbrew/bin"
+}
+
+shell::locale_setup()
+{
+    local locale="en_US.UTF-8"
+    #local measurements=( en_DK.UTF-8 en_IE.UTF-8 ${locale} C )
+
+    # system
+    export LANG="${locale}"
+    export LC_CTYPE="${locale}"
+    export LC_MESSAGES="${locale}"
+    export LC_MONETARY="${locale}"
+    export LC_NUMERIC="${locale}"
+    export LC_COLLATE="C"
+    #export LC_TIME="${measurements[1]}"
+}
+
+shell::terminal_setup()
+{
+    if [ "$TERM" == "xterm" ]; then
+        export TERM="xterm-256color"
+    fi
+}
+
+shell::term_set()
+{
+    if [[ -z $TMUX ]]; then
+        if [ -e /usr/share/terminfo/x/xterm+256color ]; then # may be xterm-256 depending on your distro
+            export TERM='xterm-256color'
+        else
+            export TERM='xterm'
+        fi
+    else
+        if [ -e /usr/share/terminfo/s/screen-256color ]; then
+            export TERM='screen-256color'
+        else
+            export TERM='screen'
+        fi
+    fi
+}
+
+shell::lib_load
+shell::module_load
+shell::path_setup
+shell::locale_setup
+shell::term_set
+

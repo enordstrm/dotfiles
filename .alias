@@ -1,0 +1,20 @@
+# Local Variables:
+# mode: shell-script
+# End:
+
+###
+# Set up the alias for managing dotfiles.
+alias dotfiles='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+
+
+###
+# Use colors for coreutils.
+alias ls='ls --color=auto'
+alias ll='ls -la --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+###
+# Nicer versions of common utils.
+alias pl='ps -o pid,ppid,pgid,lwp,nlwp,psr,cls,pri,state,vsz,rss,bsdstart,bsdtime,user,cmd'
