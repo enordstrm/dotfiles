@@ -1,13 +1,15 @@
 
-export DOT_DIR="$(dirname "$(readlink -f "$0")")"
+export DOT_DIR="${HOME}"
+
+export SHELL=$(which zsh)
 
 zshrc::shell_load()
 {
-    source "${DOT_DIR}/shellrc"
+    source "${DOT_DIR}/.shellrc"
 }
 
 zshrc::plugins() {
-    source "${DOT_DIR}/zplug/init.zsh"
+    source "${DOT_DIR}/.zplug/init.zsh"
 
     # Prompt and its dependencies
     zplug "mafredri/zsh-async"
@@ -27,7 +29,7 @@ zshrc::plugins() {
     zplug load
 }
 
-source "${DOT_DIR}/alias"
+source "${DOT_DIR}/.alias"
 
 [ -r "$HOME/.workrc" ] && source "$HOME/.workrc"
 

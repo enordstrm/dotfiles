@@ -7,7 +7,7 @@ if [ -z "${DOT_DIR}" ]; then
     exit
 fi
 
-SHELL_PATH="${DOT_DIR}/shell"
+SHELL_PATH="${DOT_DIR}/.shell"
 
 shell::lib_load() 
 {
