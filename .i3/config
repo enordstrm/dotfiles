@@ -197,12 +197,5 @@ bindsym $mod+F7 exec $HOME/bin/toggle_touchpad
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 2 +10% && killall -SIGUSR1 i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 2 -- -10% && killall -SIGUSR1 i3status
 
-# Programs to run at startup
-exec --no-startup-id /usr/bin/dropboxd
-exec --no-startup-id /usr/bin/redshift-gtk -l 57.7000:11.9667
-exec --no-startup-id /usr/bin/nm-applet
-exec --no-startup-id /usr/bin/gnome-sound-applet
-exec --no-startup-id /usr/bin/gnome-settings-daemon
-
 # Init script
 exec ~/.i3-init
