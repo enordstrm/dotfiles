@@ -8,6 +8,7 @@ if [ -z "${DOT_DIR}" ]; then
 fi
 
 SHELL_PATH="${DOT_DIR}/.shell"
+LOCAL_FILE="${DOT_DIR}/.shellrc.local"
 
 shell::lib_load() 
 {
@@ -75,9 +76,17 @@ shell::term_set()
     fi
 }
 
+shell::local()
+{
+    if [[ -f ${LOCAL_FILE} ]]; then
+        source ${LOCAL_FILE}
+    fi
+}
+
 shell::lib_load
 shell::module_load
 shell::path_setup
 shell::locale_setup
 shell::term_set
+shell::local
 
