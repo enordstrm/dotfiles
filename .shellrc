@@ -7,19 +7,22 @@ if [ -z "${DOT_DIR}" ]; then
     exit
 fi
 
-SHELL_PATH="${DOT_DIR}/.shell"
-LOCAL_FILE="${DOT_DIR}/.shellrc.local"
+DOT_SHELL_PATH="${DOT_DIR}/.shell"
+DOT_LOCAL_FILE="${DOT_DIR}/.shellrc.local"
+DOT_COLORS_FILE="${DOT_DIR}/.colors"
+
+LINUXBREW_PATH="${HOME}/.linuxbrew" 
 
 shell::lib_load() 
 {
-    for f in ${SHELL_PATH}/lib/*; do
+    for f in ${DOT_SHELL_PATH}/lib/*; do
         source $f
     done 
 }
 
 shell::module_load()
 {
-    for f in ${SHELL_PATH}/*; do
+    for f in ${DOT_SHELL_PATH}/*; do
         if [ -f "$f" ]; then # skip directories
             source $f
         fi
@@ -30,11 +33,6 @@ shell::path_setup()
 {
     path::prepend "${HOME}/.local/bin"
     path::prepend "${HOME}/bin"
-
-    path::prepend /usr/local/bin
-    path::prepend /usr/local/sbin
-
-    path::prepend "${HOME}/.linuxbrew/bin"
 }
 
 shell::locale_setup()
@@ -83,6 +81,21 @@ shell::local()
     fi
 }
 
+shell::brew()
+{
+    if [[ -d "${LINUXBREW_PATH}" ]]; then
+        path::prepend "${LINUXBREW_PATH}/bin" 
+        path::prepend "${LINUXBREW_PATH}/sbin" 
+    fi
+}
+
+shell::colors()
+{
+    source "${DOT_COLORS_FILE}"
+}
+
+shell::colors
+shell::brew
 shell::lib_load
 shell::module_load
 shell::path_setup
