@@ -1,4 +1,3 @@
-
 export DOT_DIR="${HOME}"
 export SHELL=$(which zsh)
 
@@ -34,14 +33,22 @@ zshrc::alias()
     source "${DOT_DIR}/.alias"
 }
 
-zshrc::settings()
+zshrc::zsh()
 {
+    # completion
     zstyle ':completion:*' menu select
     zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+    # zsh-autosuggestions
+    export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="${AUTOSUGGEST_HIGHLIGHT_STYLE}"
+    bindkey '^ ' autosuggest-accept
+
+    autoload -U compinit && compinit
+    zmodload -i zsh/complist
 }
 
 zshrc::shell
-zshrc::settings
 zshrc::alias
 zshrc::plugins
+zshrc::zsh
 
