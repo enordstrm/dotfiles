@@ -47,8 +47,25 @@ zshrc::zsh()
     zmodload -i zsh/complist
 }
 
+zshrc::history()
+{
+    export HISTSIZE=999999999
+    export SAVEHIST=$HISTSIZE
+    export HISTFILE=~/.zsh_history
+
+    setopt share_history
+    setopt inc_append_history
+}
+
+zshrc::local()
+{
+    [ -r "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
+}
+
 zshrc::shell
 zshrc::alias
 zshrc::plugins
 zshrc::zsh
+zshrc::local
+zshrc::history
 
