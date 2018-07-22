@@ -94,9 +94,9 @@ shell::colors()
     source "${DOT_COLORS_FILE}"
 }
 
+shell::lib_load
 shell::colors
 shell::brew
-shell::lib_load
 shell::module_load
 shell::path_setup
 shell::locale_setup
