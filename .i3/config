@@ -43,7 +43,7 @@ bindsym $mod+Tab workspace back_and_forth
 
 # start a terminal
 #bindsym $mod+Return exec termite --config $HOME/.termite
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -177,10 +177,6 @@ bar {
         status_command $HOME/.i3/conky-i3bar
         tray_output primary
 }
-
-# Auto-float windows
-for_window [title="KeePass"] floating enable
-for_window [title="^Spotify*"] floating enable
 
 # scratch-pad
 bindsym $mod+minus scratchpad show
