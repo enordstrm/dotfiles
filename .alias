@@ -1,7 +1,7 @@
 
 alias::dotfiles()
 {
-    alias dot='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
+    alias dot='git --git-dir=$HOME/.dot.git/ --work-tree=$HOME'
 }
 
 alias::coreutils()
