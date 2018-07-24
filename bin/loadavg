@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+#
+# loadavg
+#
+# Author
+#     Eric Nordström <eric@nrdstrm.org>
+#
+# Description
+#     Generic load avarage function(s) for Linux and Darwin (MacOS).
+#
+
+loadavg_linux() {
+    echo $(cut -f1-3 -d' ' < /proc/loadavg)
+}
+
+loadavg_darwin() {
+    echo $(sysctl -n vm.loadavg | cut -f2-4 -d' ')
+}
+
+loadavg() {
+    case $(uname -s) in
+        "Linux") loadavg_linux ;;
+        "Darwin") loadavg_darwin ;;
+    esac
+}
+
+main() {
+    echo $(loadavg)
+}
+
+main "${@}"
