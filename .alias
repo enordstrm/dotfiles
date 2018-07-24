@@ -6,11 +6,9 @@ alias::dotfiles()
 
 alias::coreutils()
 {
-    if ( ls --color 1>/dev/null 2>&1 )
-    then
-        alias ls='ls --color=auto'
-    elif ( ls -G 1>/dev/null 2>&1 )
-    then
+    if ( ls --color 1>/dev/null 2>&1 ); then 
+       alias ls='ls --color=auto'
+    elif ( ls -G 1>/dev/null 2>&1 ); then
         alias ls='ls -G'
     fi
 
@@ -21,5 +19,13 @@ alias::coreutils()
     alias ll='ls -lah'
 }
 
+alias::cd()
+{
+    alias   ..="cd .."
+    alias  ...="cd ../.."
+    alias ....="cd ../../.."
+}
+
 alias::coreutils
 alias::dotfiles
+alias::cd
