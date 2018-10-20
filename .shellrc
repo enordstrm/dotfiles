@@ -31,6 +31,8 @@ shell::module_load()
 
 shell::path_setup()
 {
+    path::prepend "/usr/local/bin"
+    path::prepend "/usr/local/sbin"
     path::prepend "${HOME}/.local/bin"
     path::prepend "${HOME}/bin"
 }
