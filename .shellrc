@@ -81,6 +81,9 @@ shell::brew()
         path::prepend "${LINUXBREW_PATH}/bin" 
         path::prepend "${LINUXBREW_PATH}/sbin" 
     fi
+    if [[ -d "/opt/homebrew" ]]; then
+        path::prepend "/opt/homebrew/bin"
+    fi
 }
 
 shell::colors()
