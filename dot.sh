@@ -1,16 +1,6 @@
 #!/usr/bin/env bash
-#
-# dot.sh
-#
-# Author
-#     Eric Nordström <eric@nrdstrm.org>
-#
-# Description
-#     Sets up dotfiles as a local bare repository cloned from a remote one and
-#     checks it out with a non-inline working and- git directory.
-#
 
-DOT_ORIGIN_URL="${DOT_ORIGIN:-eric@dev.sbin.io:repo/dotfiles.git}"
+DOT_ORIGIN_URL="${DOT_ORIGIN:-https://github.com/enordstrm/dotfiles}"
 DOT_GIT_DIR="${DOT_GIT_DIR:-${HOME}/.dot.git}"
 DOT_BACKUP_DIR="${DOT_BACKUP_DIR:-${HOME}/.dot.bak}"
 
