@@ -11,8 +11,10 @@ zshrc::plugins()
     source "${DOT_DIR}/.zplug/init.zsh"
 
     # Prompt and its dependencies
-    zplug "mafredri/zsh-async"
-    zplug "sindresorhus/pure"
+    zplug "mafredri/zsh-async", from:github
+
+    zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+    export PURE_GIT_PULL=0 # Disable remote update check cause it is slow on large repos
 
     # Fish emulation
     zplug "zsh-users/zsh-autosuggestions"
