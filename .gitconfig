@@ -1,12 +1,11 @@
 [core]
-    #pager = "diff-wrapper.sh"
     editor = "vim --noplugin"
     whitespace = cr-at-eol,trailiing-space,space-before-tab,tabwidth=8
     preloadindex = true
     excludesfile = ~/.gitignore.core
 
-[color]	
-	ui = true
+[color]
+    ui = true
 
 [advice]
     statusHints = false
@@ -15,7 +14,7 @@
     follow = true
 
 [alias]
-    submodule-update = !git submodule sync && git submodule update --init
+    submodule-update = !git submodule sync && git submodule update --init --recursive
     grep-rename = "!f() { git grep -l \"${1}\" ${GIT_PREFIX}${3:-} | xargs sed -i '' -e \"s/${1}/${2}/g\"; }; f"
     fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET ${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f"
 
